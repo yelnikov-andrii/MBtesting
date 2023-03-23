@@ -13,7 +13,8 @@ To run this project pull repository from the source code link, then install node
 
 ## First - please, type here your Full Name, Email, Phone
 
-Replace this string by your NAME, EMAIl, PHONE
+<!-- Replace this string by your NAME, EMAIl, PHONE -->
+Andrii Yelnikov, andriiyelnikov@gmail.com, +380936012874
 
 ## WHAT TO DO
 

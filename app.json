@@ -35,13 +35,6 @@
         {
           "photosPermission": "The app accesses your photos to let you share them with us in consultation chat, or for you avatar settup."
         }
-      ],
-      [
-        "expo-camera",
-        {
-          "cameraPermission": "Allow the app to access your camera to let you share the photos and videos with us in consultation chat",
-          "microphonePermission": "Allow the app to access your microphone to let you share the videos with us in consultation chat"
-        }
       ]
     ]
   },

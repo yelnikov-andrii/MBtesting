@@ -25,7 +25,7 @@ function LogoTitle() {
       />
     );
 }
-function StackScreen({userData, setUserData}) {
+function StackScreen({userData, setUserData, setUser}) {
 
     return (
    
@@ -39,7 +39,7 @@ function StackScreen({userData, setUserData}) {
                 <Stack.Screen
                     name='Homepage'
                     //component={Homepage}
-                    children={()=><Homepage userData={userData} setUserData={setUserData}/>}
+                    children={()=><Homepage userData={userData} setUserData={setUserData} setUser={setUser} />}
                     options={{ 
                       headerTitle: (props) => <LogoTitle />,
                       headerStyle: {
@@ -54,14 +54,14 @@ function StackScreen({userData, setUserData}) {
     )
 }
 
-//const AccountStack = createNativeStackNavigator();
+const AccountStack = createNativeStackNavigator();
 
-function AccountStackScreen({userData, setUserData}) {
+function AccountStackScreen({user}) {
     return (
         <AccountStack.Navigator>
             <AccountStack.Screen
                 name='Account'
-                component={MyAccount}
+                children={()=> <Account user={user} />}
                 options={
                   { 
                     title: 'Акаунт',
@@ -75,7 +75,7 @@ function AccountStackScreen({userData, setUserData}) {
 
 const Tab = createBottomTabNavigator();
 
-export default function TabNavigation({userData, setUserData}) {
+export default function TabNavigation({userData, setUserData, user, setUser}) {
     return <NavigationContainer>
         <Tab.Navigator
             
@@ -126,12 +126,17 @@ export default function TabNavigation({userData, setUserData}) {
                     ),
                 }}
                 //component={StackScreen} 
-                children={()=><StackScreen userData={userData} setUserData={setUserData}/>}
+                children={()=><StackScreen userData={userData} setUserData={setUserData} setUser={setUser} />}
             />
             
             <Tab.Screen 
                 name="My account" 
-                tabBarOptions = {{ showIcon: true }} 
+                tabBarOptions = {{ showIcon: true }}
+                listeners={{
+                  tabPress: () => {
+                    alert('Entered account tab')
+                  }
+                }}
                 options={{
                     tabBarLabel: 'Акаунт',
                     tabBarIcon: ({ focused, color, size }) => (
@@ -149,8 +154,8 @@ export default function TabNavigation({userData, setUserData}) {
                       />
                     ),
                 }}
-                //component={AccountStackScreen} 
-                children={()=><NotAccountStackScreen userData={userData} setUserData={setUserData}/>}
+                // component={AccountStackScreen} 
+                children={()=><AccountStackScreen user={user} />}
             />
         </Tab.Navigator>
     </NavigationContainer>

@@ -2,18 +2,29 @@ import React, { useState, useEffect} from "react";
 import { StyleSheet, View, ScrollView, Text} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-//import {getItemFromAsyncStorage, mergeItemInAsyncStorage, deleteItemFromAsyncStorage} from './AsyncStorageMethods'
+import {getItemFromAsyncStorage, mergeItemInAsyncStorage, deleteItemFromAsyncStorage} from './AsyncStorageMethods'
 
-export default function Account({ userData, setUserData }) {
-
+export default function Account({user}) {
     /// main navigation usage
     const navigation = useNavigation();
     //const [userData, setUserData] = useState([]);
+
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView 
+          style={styles.container}
+        >
             <View style={styles.center}>
                 <View style={styles.imageView}>
                     <Text>Account</Text>
+                </View>
+                <View style={{
+                    marginTop: 10,
+                }}>
+                    <Text style={{
+                        color: 'teal'
+                    }}>
+                        {user ? `${user.name}` : 'John Doe'}
+                    </Text>
                 </View>
             </View>
         </ScrollView>
